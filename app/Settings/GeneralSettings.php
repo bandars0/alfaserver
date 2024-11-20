@@ -12,7 +12,7 @@ use Spatie\LaravelSettings\Settings;
 class GeneralSettings extends Settings
 {
 
-    public string $site_name = 'Alfa Medical';
+    public string $site_name = 'Alfa Medical ';
     public string $logo = '';
     public string $company = '';
     public string $copyright = '© 2022 Alfa Medical. All rights reserved.';
