@@ -73,6 +73,9 @@ class CertificateResource extends Resource
                         })->default(Auth::id())->hidden(),
                         TextInput::make('certificate_url')->readOnly()
                             ->formatStateUsing(function ($record) {
+                                if (empty($record->certificate_file)) {
+                                    return null;
+                                }
                                 return asset(Storage::url($record->certificate_file));
                             })->prefix('open')
                             ->prefixAction(function (\Filament\Forms\Components\Actions\Action $action, $record) {
