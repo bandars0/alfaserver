@@ -79,6 +79,9 @@ class CertificateResource extends Resource
                                 return asset(Storage::url($record->certificate_file));
                             })->prefix('open')
                             ->prefixAction(function (\Filament\Forms\Components\Actions\Action $action, $record) {
+                                if (empty($record->certificate_file)) {
+                                    return null;
+                                }
                                 return $action::make('open_urls')->icon('heroicon-o-link')->url(asset(Storage::url($record->certificate_file)), true);
                             })
                             ->url(),
