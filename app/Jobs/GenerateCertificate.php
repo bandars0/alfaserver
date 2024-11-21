@@ -61,9 +61,9 @@ class GenerateCertificate implements ShouldQueue
                 'issue_date' => $this->formateDate($certificationData['date_of_issue']),
                 'expired_date' => $this->formateDate($certificationData['cal_due']),
             ]);
-            $certificate->generateQrCode();
-            GeneratePDF::dispatch( $certificate->id)->delay(10);
-//            CertificateQrCodeJob::dispatch($certificate->id)->delay(5);
+
+            CertificateQrCodeJob::dispatch($certificate->id)->delay(15);
+            GeneratePDF::dispatch($certificate->id)->delay(20);
             ImportsHistory::create([
                 'certification_number' => $cartNumber,
                 'status' => 'success',

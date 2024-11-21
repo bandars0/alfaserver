@@ -25,6 +25,6 @@ class CertificateQrCodeJob implements ShouldQueue
     public function handle(): void
     {
         $this->certificate->generateQrCode();
-        GeneratePDF::dispatch( $this->certificate->id)->delay(60);
+//        GeneratePDF::dispatch( $this->certificate->id)->delay(60);
     }
 }
