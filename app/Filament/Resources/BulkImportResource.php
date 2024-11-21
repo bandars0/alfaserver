@@ -124,10 +124,10 @@ class BulkImportResource extends Resource
                     ->color('success')
                     ->label('Run')
                     ->action(function (BulkImport $record) {
-                        if ($record->status == 'completed') {
-                            Notification::make()->title('Them importer is completed.')->warning()->send();
-                            return;
-                        }
+//                        if ($record->status == 'completed') {
+//                            Notification::make()->title('Them importer is completed.')->warning()->send();
+//                            return;
+//                        }
                         try {
                             Excel::import(new CertificationsImport($record), $record->file, 'public');
                             Notification::make()->title('started queue for processing.')->success()->send();
