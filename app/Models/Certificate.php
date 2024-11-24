@@ -31,11 +31,14 @@ class Certificate extends Model
 
         });
         static::retrieved(function ($certificate) {
-            if (Carbon::make($certificate->expired_date)->isPast()) {
-                DB::table('certificates')->where('id', $certificate->attributes['id'])->update(['status' => CertificateStatus::EXPIRED]);
-            } elseif (Carbon::make($certificate->expired_date)->isFuture()) {
-                DB::table('certificates')->where('id', $certificate->attributes['id'])->update(['status' => CertificateStatus::VALID]);
+            if (!empty($certificate->expired_date)){
+                if (Carbon::make($certificate->expired_date)->isPast()) {
+                    DB::table('certificates')->where('id', $certificate->attributes['id'])->update(['status' => CertificateStatus::EXPIRED]);
+                } elseif (Carbon::make($certificate->expired_date)->isFuture()) {
+                    DB::table('certificates')->where('id', $certificate->attributes['id'])->update(['status' => CertificateStatus::VALID]);
+                }
             }
+
             if (!empty($certificate->certificate_file) && empty($certificate->certificate_url)) {
                 DB::table('certificates')->where('id', $certificate->attributes['id'])->update(['certificate_url' => asset(Storage::url($certificate->certificate_file))]);
             }
