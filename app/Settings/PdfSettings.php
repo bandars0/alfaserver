@@ -11,10 +11,10 @@ use Spatie\LaravelSettings\Settings;
  */
 class PdfSettings extends Settings
 {
-    public string $header = ' ';
-    public string $footer = ' ';
-    public string $co_name = 'Alfa Medical';
-    public string $logo = ' ';
+    public $header;
+    public $footer;
+    public $co_name = 'Alfa Medical';
+    public $logo;
 
     public static function group(): string
     {

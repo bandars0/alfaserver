@@ -12,10 +12,10 @@ use Spatie\LaravelSettings\Settings;
 class GeneralSettings extends Settings
 {
 
-    public string $site_name = 'Alfa Medical ';
-    public string $logo = '';
-    public string $company = '';
-    public string $copyright = '© 2022 Alfa Medical. All rights reserved.';
+    public $site_name = 'Alfa Medical ';
+    public $logo = '';
+    public $company = '';
+    public $copyright = '© 2022 Alfa Medical. All rights reserved.';
 
 
     public static function group(): string
